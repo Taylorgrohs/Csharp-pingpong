@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System;
 namespace PingPong
 {
-  public class PingPongTest
+  public class PingPongTest : IDisposable
   {
     [Fact]
-    public void IsPingPong_ForNumbers_true()
+    public void IsPingPong_For3_true()
     {
-    int number = 15000;
+    int number = 3;
     PingPong newPingPong = new PingPong(number);
     List<string> pingList = PingPong.Play();
     List<string> newList = new List<string> { "1", "2", "ping" };
@@ -19,6 +19,42 @@ namespace PingPong
     }
 
     Assert.Equal(newList, pingList);
+    }
+
+    [Fact]
+    public void IsPingPong_Forfive_true()
+    {
+    int number = 5;
+    PingPong newPingPong = new PingPong(number);
+    List<string> pingList = PingPong.Play();
+    List<string> newList = new List<string> { "1", "2", "ping", "4", "pong" };
+
+    foreach (var item in pingList)
+    {
+      Console.WriteLine("Output: " + item);
+    }
+
+    Assert.Equal(newList, pingList);
+    }
+
+    [Fact]
+    public void IsPingPong_Forfifteen_true()
+    {
+    int number = 15;
+    PingPong newPingPong = new PingPong(number);
+    List<string> pingList = PingPong.Play();
+    List<string> newList = new List<string> { "1", "2", "ping", "4", "pong", "ping", "7", "8", "ping", "pong", "11", "ping", "13", "14", "ping-pong" };
+
+    foreach (var item in pingList)
+    {
+      Console.WriteLine("Output: " + item);
+    }
+
+    Assert.Equal(newList, pingList);
+    }
+    public void Dispose()
+    {
+      PingPong.DeleteAll();
     }
   }
 }

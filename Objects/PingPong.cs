@@ -65,5 +65,10 @@ namespace PingPong
     {
       return pingList;
     }
+    public static void DeleteAll()
+    {
+      newList.Clear();
+      pingList.Clear();
+    }
   }
 }
